@@ -68,7 +68,12 @@
   commentstyle=\color{darkgray},
   stringstyle={\bfseries\color{Green4}},
   breakatwhitespace=true,
-  tabsize=3}
+  tabsize=8}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\setmainfont[Mapping=tex-text]{Minion Pro}
+\setsansfont[Mapping=tex-text]{Cronos Pro}
 
 \input{version.tex}
 \def\prepdate{\number\year\textperiodcentered\ifnum\month<10 0\fi\number\month\textperiodcentered\ifnum\day<10 0\fi\number\day}
@@ -141,6 +146,7 @@ Version \theversion
 \thispagestyle{empty}
 
 \begin{flushright}
+\sffamily
 \vspace*{2.5in}
 
 {\huge Think Java}
@@ -163,6 +169,7 @@ Version \theversion
 \thispagestyle{empty}
 
 \begin{flushright}
+\sffamily
 \vspace*{2.5in}
 
 {\huge Think Java}
