@@ -7,3 +7,4 @@
 *.ind
 *.out
 /.auctex/
+/version.tex
