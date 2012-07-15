@@ -6,15 +6,15 @@ PDFFLAGS = -dCompatibilityLevel=1.4 \
            -dCompressPages=true -dUseFlateCompression=true  \
            -dEmbedAllFonts=true -dSubsetFonts=true -dMaxSubsetPct=100
 
-all:	thinkapjava.tex
-	latex thinkapjava
-	makeindex thinkapjava
-	latex thinkapjava
-	dvips -Ppdf -o thinkapjava.ps thinkapjava
-	ghostview thinkapjava.ps
+all:	thinkjava.tex
+	latex thinkjava
+	makeindex thinkjava
+	latex thinkjava
+	dvips -Ppdf -o thinkjava.ps thinkjava
+	ghostview thinkjava.ps
 
-pdf:	thinkapjava.ps
-	ps2pdf $(PDFFLAGS) thinkapjava.ps thinkapjava.pdf
+pdf:	thinkjava.ps
+	ps2pdf $(PDFFLAGS) thinkjava.ps thinkjava.pdf
 
 clean:
 	rm -f *~ *.aux *.log *.dvi *.idx *.ilg *.ind *.toc
