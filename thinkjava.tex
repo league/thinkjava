@@ -54,10 +54,12 @@
 \usepackage{upquote}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage[x11names]{xcolor}
 
-
+\input{version.tex}
+\def\prepdate{\number\year.\ifnum\month<10 0\fi\number\month.\ifnum\day<10 0\fi\number\day}
 \newcommand{\thetitle}{Think Java: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{5.0.5/\input{version.tex}}
+\newcommand{\theversion}{5.0.5/\gitversion}
 
 \newif\ifplastex
 \plastexfalse
@@ -163,6 +165,8 @@ Allen B. Downey
 \vspace{1in}
 
 {\Large \theversion}
+\smallskip\par
+prepared \prepdate
 
 \vfill
 

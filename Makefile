@@ -16,10 +16,10 @@ PDFFIGS = $(addsuffix .pdf,$(FIGS))
 
 default: thinkjava.pdf
 
-thinkjava.pdf: $(PDFFIGS) version.tex
+thinkjava.pdf: $(PDFFIGS) version.tex latexonly
 
 version.tex: .git/index
-	git describe --tags --always --dirty=+ >$@
+	echo '\def\gitversion{'`git describe --tags --always --dirty=+`'}' >$@
 
 %.pdf: %.tex
 	xelatex $*

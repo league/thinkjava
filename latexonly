@@ -71,10 +71,10 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 
-\lhead[\fancyplain{}{\bfseries\thepage}]%
+\lhead[\fancyplain{}{{\bfseries\thepage}\quad\color{gray}\gitversion}]%
       {\fancyplain{}{\bfseries\rightmark}}
 \rhead[\fancyplain{}{\bfseries\leftmark}]%
-      {\fancyplain{}{\bfseries\thepage}}
+      {\fancyplain{}{{\color{gray}\prepdate}\quad\bfseries\thepage}}
 \cfoot{}
 
 \pagestyle{fancyplain}
