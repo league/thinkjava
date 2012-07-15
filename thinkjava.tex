@@ -87,7 +87,9 @@
 
 % LATEX AND HTML
 
-\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{excz}{Exercise}[chapter]
+\newenvironment{exercise}{\bigskip\begin{excz}\mbox{}}{\end{excz}}
 
 \title{\thetitle}
 
