@@ -69,16 +69,19 @@
   stringstyle={\bfseries\color{Green4}},
   breakatwhitespace=true,
   tabsize=8}
+\usepackage{euler}
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
 \setmainfont[Mapping=tex-text]{Minion Pro}
 \setsansfont[Mapping=tex-text]{Cronos Pro}
+\def\WARNING{\textbf{Warning:}}
+\def\HINT{\textbf{Hint:}}
 
 \input{version.tex}
 \def\prepdate{\number\year\textperiodcentered\ifnum\month<10 0\fi\number\month\textperiodcentered\ifnum\day<10 0\fi\number\day}
 \newcommand{\thetitle}{Think Java: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{5.0.5/\gitversion}
+\newcommand{\theversion}{5.0.5 / \gitversion}
 
 \newif\ifplastex
 \plastexfalse
@@ -1402,7 +1405,7 @@ is the same regardless of the variable's type.
 %
 The output of this program is {\tt The current time is 11:59.}
 
-WARNING: To put multiple values
+\WARNING{} To put multiple values
 on the same line, is common to use several {\tt print} statements
 followed by a {\tt println}.
 But you have to remember
@@ -1615,7 +1618,7 @@ This ability may not seem impressive now, but we will see
 examples where composition 
 expresses complex computations neatly and concisely.
 
-WARNING: The left side of an assignment
+\WARNING{} The left side of an assignment
 has to be a {\em variable} name, not an expression.
 That's because the left side indicates the storage location
 where the result will go.  Expressions
@@ -1775,7 +1778,7 @@ you might run into problems computing percentages with {\tt ints},
 which is the motivation for floating point numbers in the next
 chapter.
 
-HINT: you may want to use additional variables to hold values
+\HINT{} you may want to use additional variables to hold values
 temporarily during the computation.  Variables like this, that
 are used in a computation but never printed, are sometimes called
 intermediate or temporary variables.
@@ -2478,7 +2481,7 @@ a program with multiple methods.
 \item What is the output of the following program?  Be precise
 about where there are spaces and where there are newlines.
 
-HINT: Start by describing in words what {\tt ping} and
+\HINT{} Start by describing in words what {\tt ping} and
 {\tt baffle} do when they are invoked.
 
 \item Draw a stack diagram that shows the state of the program
@@ -4217,7 +4220,7 @@ double as a parameter and that uses {\tt multadd} to calculate
 x e^{-x} + \sqrt{1 - e^{-x}}
 \end{eqnarray*}
 %
-HINT: the Math method for raising $e$ to a power is {\tt Math.exp}.
+\HINT{} the Math method for raising $e$ to a power is {\tt Math.exp}.
 
 \end{enumerate}
 
@@ -4386,7 +4389,7 @@ of the Ackerman function.
 Test your implementation of Ackerman by invoking it
 from {\tt main} and printing the return value.  
 
-WARNING: the return value gets very big very quickly.  You should try it
+\WARNING{} the return value gets very big very quickly.  You should try it
 only for small values of $m$ and $n$ (not bigger than 2).
 
 \end{exercise}
@@ -4455,7 +4458,7 @@ Write a recursive method called {\tt power} that
 takes a double {\tt x} and an integer {\tt n} and that
 returns $x^n$.
 
-Hint: a recursive definition of this
+\HINT{} a recursive definition of this
 operation is $x^n = x \cdot x^{n-1}$.
 Also, remember that anything raised to the zeroeth power
 is 1.
@@ -5292,7 +5295,7 @@ something like:
 %http://www.tex.ac.uk/tex-archive/info/symbols/comprehensive/symbols-letter.pdf
 %\textbackslash is the actual way to escape a backslash
 %(but it seems not to respect the \tt font)
-HINT: you can use the String {\tt "\textbackslash t"} to print a tab character
+\HINT{} you can use the String {\tt "\textbackslash t"} to print a tab character
 between columns of a table.
 
 \item Vary the number of terms in the series(the second argument
@@ -6155,7 +6158,7 @@ that takes a String and returns the first letter, and one named
 returns a substring that contains everything {\em except} the
 first and last characters.
 
-Hint: read the documentation of the {\tt substring} method in
+\HINT{} read the documentation of the {\tt substring} method in
 the {\tt String} class.
 Run a few tests to make sure you understand how {\tt substring} works
 before you try to write {\tt middle}.
@@ -6179,7 +6182,7 @@ word is a palindrome or not.
 
 \item Once you have a working palindrome checker, look for ways
 to simplify it by reducing the number of conditions you check.
-Hint: it might be useful to adopt the definition that the empty
+\HINT{} it might be useful to adopt the definition that the empty
 string is a palindrome.
 
 \item On a piece of paper, figure out a strategy for checking
@@ -6280,7 +6283,7 @@ get the x-coordinate of a Bug like this:
 \end{lstlisting}
 
 \item Write a method called {\tt turnToward} that takes two
-Bugs and turns one to face the other.  HINT: use {\tt Math.atan2},
+Bugs and turns one to face the other.  \HINT{} use {\tt Math.atan2},
 but remember that the result is in radians, so you have to
 convert to degrees.  Also, for Bugs, 0 degress is North, not East.
 
@@ -8797,7 +8800,7 @@ int count3 = inRange(scores, 99, 100);
 \end{lstlisting}
 
 I don't think so.  What we really want is a way to store 100 integers,
-preferably so we can use an index to access each one.  Hint: array.
+preferably so we can use an index to access each one.  \HINT{} array.
 
 The counting pattern is the same whether we use a single counter or an
 array of counters.  In this case, we initialize the array outside the
@@ -8889,7 +8892,7 @@ Write a method named {\tt areFactors} that takes
 an integer {\tt n} and an array of integers, and that returns
 {\tt true} if the numbers in the array are all factors of {\tt n}
 (which is to say that {\tt n} is divisible by all of them).
-HINT: See Exercise~\ref{ex.isdiv}.
+\HINT{} See Exercise~\ref{ex.isdiv}.
 \end{exercise}
 
 
@@ -9955,7 +9958,7 @@ card games.
 \index{deck}
 \index{array!of Cards}
 
-WARNING: In this chapter, we take another step toward object-oriented
+\WARNING{} In this chapter, we take another step toward object-oriented
 programming, but we are not there yet.  So many of the examples are
 non-idiomatic; that is, they are not good Java.  This transitional
 form will help you learn (I hope), but don't write code like this.
@@ -10442,7 +10445,7 @@ fill them in correctly, the messages should go away.
 deck (array of cards) and two indices, and that switches
 the cards at those two locations.
 
-HINT: it should switch references, not
+\HINT{} it should switch references, not
 the contents of the objects.  This is faster; also, it
 correctly handles the case where cards are aliased.
 
@@ -11621,7 +11624,7 @@ The result should look like Mickey Moose:
 
 \includegraphics[height=2in]{figs/moose.pdf}
 
-Hint: you should only have to add or modify a few lines of code.
+\HINT{} you should only have to add or modify a few lines of code.
 
 You can download a solution from
 \url{http://thinkapjava.com/code/MickeySoln.java}.
