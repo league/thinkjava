@@ -22,7 +22,7 @@ version.tex: .git/index
 	echo '\def\gitversion{'`git describe --tags --always --dirty=+`'}' >$@
 
 %.pdf: %.tex
-	xelatex -halt-on-error  $*
+	xelatex -halt-on-error  $* && makeindex $* && xelatex $*
 
 %.pdf: %.eps
 	epstopdf $<
