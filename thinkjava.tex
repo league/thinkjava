@@ -4114,13 +4114,13 @@ but that's why it's called a leap of faith!
 \label{fibonacci}
 
 The second most common example of a recursively-defined
-mathematical function is {\tt fibonacci}, which has the
+mathematical function is $\mathrm{fibonacci}$, which has the
 following definition:
 %
 \begin{eqnarray*}
-&& fibonacci(0) = 1 \\
-&& fibonacci(1) = 1 \\
-&& fibonacci(n) = fibonacci(n-1) + fibonacci(n-2);
+&& \mathrm{fibonacci}(0) = 1 \\
+&& \mathrm{fibonacci}(1) = 1 \\
+&& \mathrm{fibonacci}(n) = \mathrm{fibonacci}(n-1) + \mathrm{fibonacci}(n-2);
 \end{eqnarray*}
 %
 Translated into Java, this is
@@ -4262,10 +4262,10 @@ not be able to get the short sticks to meet in the middle.  For any
 three lengths, there is a simple test to see if it is possible to form
 a triangle:
 
-\begin{quotation}
+\begin{quote}
 ``If any of the three lengths is greater than the sum of the other two,
 then you cannot form a triangle.  Otherwise, you can.''
-\end{quotation}
+\end{quote}
 
 Write a method named {\tt isTriangle} that it takes three integers as
 arguments, and that returns either {\tt true} or {\tt false},
@@ -4325,7 +4325,7 @@ and the flow of execution through fruitful methods.
 The distance between two points $(x_1, y_1)$ and $(x_2, y_2)$
 is
 
-\[Distance = \sqrt{(x_2 - x_1)^2 +(y_2 - y_1)^2} \]
+\[\mathrm{Distance} = \sqrt{(x_2 - x_1)^2 +(y_2 - y_1)^2} \]
 
 Write a method named {\tt distance} that takes four
 doubles as parameters---{\tt x1}, {\tt y1}, {\tt x2} and {\tt
@@ -4501,13 +4501,13 @@ remainder when $a$ is divided by $b$, then the common divisors
 of $a$ and $b$ are the same as the common divisors of $b$ and $r$.
 Thus we can use the equation
 %
-\[ gcd(a, b) = gcd(b, r) \]
+\[ \mathrm{gcd}(a, b) = \mathrm{gcd}(b, r) \]
 %
 to successively reduce the problem of computing a GCD to the
 problem of computing the GCD of smaller and smaller pairs of integers.
 For example,
 %
-\[ gcd(36, 20) = gcd(20, 16) = gcd(16, 4) = gcd(4, 0) = 4\]
+\[ \mathrm{gcd}(36, 20) = \mathrm{gcd}(20, 16) = \mathrm{gcd}(16, 4) = \mathrm{gcd}(4, 0) = 4\]
 %
 implies that the GCD of 36 and 20 is 4.  It can be shown
 that for any two starting numbers, this repeated reduction eventually
@@ -4769,7 +4769,7 @@ respect to base 2.  To compute them, we can use the following
 formula:
 
 \begin{equation}
-\log_2 x = log_e x / log_e 2
+\log_2 x = \log_e x / \log_e 2
 \end{equation}
 %
 Changing the {\tt print} statement to
