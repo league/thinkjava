@@ -28,6 +28,16 @@
 
 \makeatletter
 
+\let\@ORIGchapter\@makechapterhead
+\def\@makechapterhead#1{{%
+    \let\normalfont\sffamily%
+    \@ORIGchapter{#1}}}
+
+\let\@ORIGschapter\@makeschapterhead
+\def\@makeschapterhead#1{{%
+    \let\normalfont\sffamily%
+    \@ORIGschapter{#1}}}
+
 \renewcommand{\section}{\@startsection 
     {section} {1} {0mm}%
     {-3.5ex \@plus -1ex \@minus -.2ex}%
