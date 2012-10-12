@@ -2061,11 +2061,14 @@ is special, but the syntax is the same for other methods:
   }
 \end{lstlisting}
 %
-You can make up any name you want for your method, except
-that you can't call it {\tt main} or any
-Java keyword.  By convention, Java methods start with a lower
-case letter and use ``camel caps,'' which is a cute name for
-{\tt jammingWordsTogetherLikeThis}.
+You can make up any name you want for your method, except that you
+can't call it {\tt main} or any Java keyword, and it can't contain
+spaces or punctuation. By convention, Java methods start with a lower
+case letter and use ``camel case,'' which is a cute name for {\tt
+  jammingWordsTogetherLikeThis}.\footnote{An alternative to camel
+  case, more common in the C language, is to use underscores to
+  separate words, \texttt{something\_like\_this}. The underscore is
+  the only punctuation character that is valid in method names.}
 
 The list of parameters specifies what information, if any, you have to
 provide to use (or {\bf invoke}) the new method.
@@ -2221,7 +2224,7 @@ methods and the methods we write:
 \end{lstlisting}
 %
 The first statement invokes the {\tt pow} method in
-the {\tt Math class} (which raises the first argument to the
+the {\tt Math} class (which raises the first argument to the
 power of the second argument).  The second statement invokes
 the {\tt newLine} method, which Java assumes 
 is in the {\tt NewLine} class, which is what we are writing.
