@@ -498,6 +498,12 @@ comments or corrections to \url{christopher.league@liu.edu}
   \verb+listings+.
 \item Many other typographical tweaks, including using Adobe Type
   Classics professional fonts.
+\item Explained multi-line comments in chapter 1.
+\item Improved specification of identifier rules and conventions in
+  chapter 3.
+\item Added several exercises to chapter 4. Further explanation of
+  \texttt{if}/\texttt{else} chain and type conversions using
+  \texttt{+} operator.
 \end{itemize}
 
 
@@ -2617,6 +2623,12 @@ digit or digits from a number.  For example, {\tt x \% 10} yields
 the rightmost digit of {\tt x} (in base 10).  Similarly
 {\tt x \% 100} yields the last two digits.
 
+\begin{exercise}
+  Write a small Java program to print out the results of various
+  modulus expressions, such as: \texttt{39\%5},\; \texttt{16\%7},\;
+  \texttt{99\%2},\; and \texttt{98\%2}. See if you can predict the
+  result of each expression before running your program.
+\end{exercise}
 
 \section{Conditional execution}
 \index{conditional}
@@ -2657,9 +2669,9 @@ sometimes called {\bf relational operators}:
 Although these operations are probably familiar to you, the
 syntax Java uses is a little different from mathematical
 symbols like $=$, $\neq$ and $\le$.  A common error is
-to use a single {\tt =} instead of a double {\tt ==}.  Remember
+to use a single {\tt =} instead of a double {\tt ==}.  \textbf{Remember
 that {\tt =} is the assignment operator, and {\tt ==} is
-a comparison operator.  Also, there is no such thing as
+a comparison operator.}  Also, there is no such thing as
 {\tt =<} or {\tt =>}.
 
 The two sides of a condition operator have to be the same
@@ -2671,6 +2683,20 @@ don't do what you expect.  And the other relational operators
 don't do anything at all.
 We will see how to compare strings Section~\ref{incomparable}.
 
+\begin{exercise}
+  Write a small program containing an integer variable, and then
+  use an \texttt{if} statement to test its value:
+\begin{lstlisting}
+    int x = 5;
+    if(x == 6) {
+        System.out.println("Oops");
+    }
+\end{lstlisting}
+  What happens when you test \texttt{x == 5} versus \texttt{x == 6} as
+  the condition of the \texttt{if} statement? What error message do
+  you see if you forget the rule about the equality operator, and
+  instead type \texttt{x = 6} in the \texttt{if} condition?
+\end{exercise}
 
 \section {Alternative execution}
 \label{alternative}
@@ -2727,7 +2753,27 @@ temptation to write things like:
     printParity(int number);         // WRONG!!!
 \end{lstlisting}
 
-
+\begin{exercise}
+  In the \texttt{printParity} example, the output always refers to
+  \texttt{x} instead of the number you pass as an argument. This means
+  that with multiple calls, such as:
+\begin{lstlisting}
+    printParity(15);
+    printParity(14);
+\end{lstlisting}
+  the output would appear contradictory:
+\begin{verbatim}
+    x is odd
+    x is even
+\end{verbatim}
+  Modify the definition of \texttt{printParity} so that it prints out
+  the \textit{value} of its parameter \texttt{x}, along with its
+  parity:
+\begin{verbatim}
+    15 is odd
+    14 is even
+\end{verbatim}
+\end{exercise}
 \section {Chained conditionals}
 \index{conditional!chained}
 
@@ -2753,13 +2799,49 @@ statements and squiggly-brackets lined up, you are less
 likely to make syntax errors and more likely to find them
 if you do.
 
+In an \texttt{if}/\texttt{else} chain, the \emph{first} conditional
+expression that evaluates to true is used. Any subsequent conditions,
+whether true or false, follow the \texttt{else} of the first true
+condition, so they are ignored. Consider the following chain:
+\begin{lstlisting}
+    if (temperature > 85) {
+      System.out.println("Hot!");
+    } else if (temperature > 50) {
+      System.out.println("Mild");
+    } else {
+      System.out.println("Cold");
+    }
+\end{lstlisting}
+When temperature equals \texttt{94}, \emph{both} conditions are true,
+but only the first (``Hot!'') is executed. If we leave out the first
+\texttt{else}, then the effect is different, because now the two
+conditional expressions are independent:
+\begin{lstlisting}
+    if (temperature > 85) {
+      System.out.println("Hot!");
+    }
+    if (temperature > 50) {
+      System.out.println("Mild");
+    } else {
+      System.out.println("Cold");
+    }
+\end{lstlisting}
 
+\begin{exercise}
+  Write a program to test the difference between the two
+  \texttt{if}/\texttt{else} chains comparing temperatures, above.
+\end{exercise}
+
+\begin{exercise}
+  Write a program that defines an integer variable \texttt{quizScore},
+  and then outputs ``You earned an A!'' if the score is 90 or above,
+  ``B'' if it is in the range 80--89, ``C'' for 70--79, etc.
+\end{exercise}
 \section{Nested conditionals}
 \index{conditional!nested}
 
-In addition to chaining, you can also nest one conditional
-within another.  We could have written the previous example
-as:
+In addition to chaining, you can also nest one conditional within
+another. We could have written the positive/negative example as:
 
 \begin{lstlisting}
     if (x == 0) {
@@ -2830,25 +2912,46 @@ and the other is a {\tt double}.  In this case Java is being
 smart on our behalf, automatically converting the {\tt double} to a
 {\tt String} before it does the string concatenation.
 
-%This kind of feature is an example of a common problem in designing a
-%programming language, which is that there is a conflict between {\em
-%formalism}, which is the requirement that formal languages should have
-%simple rules with few exceptions, and {\em convenience}, which is the
-%requirement that programming languages be easy to use in practice.
+Whenever you try to ``add'' two expressions, if one of them is a {\tt
+  String}, Java converts the other to a {\tt String} and then perform
+string concatenation. What do you think happens if you perform an
+operation between an integer and a floating-point value?
 
-%More often than not, convenience wins, which is usually good for
-%expert programmers (who are spared from rigorous but unwieldy
-%formalism), but bad for beginning programmers, who are often baffled
-%by the complexity of the rules and the number of exceptions.  In this
-%book I have tried to simplify things by emphasizing the rules and
-%omitting many of the exceptions.
+Automatic type conversions are an example of a common problem in
+designing a programming language. There is a conflict between {\em
+  formalism}, which is the requirement that formal languages should
+have simple rules with few exceptions, and {\em convenience}, which is
+the requirement that programming languages be easy to use in practice.
 
-Whenever you try to ``add'' two
-expressions, if one of them is a {\tt String}, Java converts the
-other to a {\tt String} and then perform string concatenation.  What do you
-think happens if you perform an operation between an integer and a
-floating-point value?
+More often than not, convenience wins, which is usually good for
+expert programmers (who are spared from rigorous but unwieldy
+formalism), but bad for beginning programmers, who are often baffled
+by the complexity of the rules and the number of exceptions.
 
+\index{associativity}
+
+One example where the flexibility of type conversions can bite you is
+when you attempt to compose multiple \texttt{+} operators:
+\begin{lstlisting}
+    int x = 4;
+    System.out.println("The secret is " + x+2);
+\end{lstlisting}
+This code produces the output \texttt{The secret is 42}, which may not
+be what you intended. It happens because the \texttt{+} operator is
+\emph{left-associative,} which means that the expression is grouped
+like this:
+\begin{lstlisting}
+    (("The secret is " + x) + 2)
+\end{lstlisting}
+The left \texttt{+} adds a string with an integer, producing the
+string \texttt{"The secret is 4"}. Then the right \texttt{+} adds that
+string with the next integer, appending the \texttt{2}. You can use
+parentheses to force Java to evaluate the right \texttt{+} first:
+\begin{lstlisting}
+    "The secret is " + (x + 2)
+\end{lstlisting}
+Now the right \texttt{+} adds two integers, producing the integer
+result \texttt{6}, producing the output \texttt{The secret is 6}.
 
 \section{Recursion}
 \label{recursion}
@@ -2919,12 +3022,12 @@ The {\tt countdown} that got {\tt n=3} returns.
 \noindent And then you're back in {\tt main}.  So the
 total output looks like:
 
-\begin{lstlisting}
+\begin{verbatim}
 3
 2
 1
 Blastoff!
-\end{lstlisting}
+\end{verbatim}
 %
 As a second example, let's look again at the methods
 {\tt newLine} and {\tt threeLine}.
