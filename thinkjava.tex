@@ -75,6 +75,7 @@
 \usepackage{xltxtra}
 \setmainfont[Mapping=tex-text]{Minion Pro}
 \setsansfont[Mapping=tex-text]{Cronos Pro}
+\usepackage{MnSymbol}
 \renewcommand{\ttdefault}{lmtt}
 \def\WARNING{\textbf{Warning:}}
 \def\HINT{\textbf{Hint:}}
@@ -99,7 +100,9 @@
 
 \theoremstyle{definition}
 \newtheorem{excz}{Exercise}[chapter]
-\newenvironment{exercise}{\bigskip\begin{excz}\mbox{}}{\end{excz}}
+\newenvironment{exercise}{%
+  \bigskip\begin{excz}\mbox{}}{%
+    \hfill$\filledsquare$\end{excz}}
 
 \title{\thetitle}
 
@@ -1100,7 +1103,6 @@ and a comment?
 \item What is an executable?
 
 \end{enumerate}
-
 \end{exercise}
 
 \begin{exercise}
@@ -1130,7 +1132,6 @@ and you might find yourself trying to debug one program while you are
 accidentally running another.  Adding (and changing) print statements
 is a simple way to be sure that the program you are looking at is
 the program you are running.
-
 \end{exercise}
 
 
@@ -1762,7 +1763,6 @@ The point of this exercise is to use string concatenation to display
 values with different types ({\tt int} and {\tt String}), and to
 practice developing programs gradually by adding a few statements
 at a time.
-
 \end{exercise}
 
 
@@ -1806,7 +1806,6 @@ chapter.
 temporarily during the computation.  Variables like this, that
 are used in a computation but never printed, are sometimes called
 intermediate or temporary variables.
-
 \end{exercise}
 
 
@@ -2421,7 +2420,6 @@ syntax is {\tt printTime(hour, minute)}.
 Draw a stack frame that shows the state of the program
 when {\tt main} invokes {\tt printTime}
 with the arguments {\tt 11} and {\tt 59}.
-
 \end{exercise}
 
 
@@ -2539,7 +2537,6 @@ the first time {\tt ping} is invoked.
     System.out.println(".");
   }
 \end{lstlisting}
-
 \end{exercise}
 
 
@@ -2557,7 +2554,6 @@ takes three parameters: an {\tt int} and two {\tt Strings}.
 as arguments the value {\tt 11}, the name of your first pet,
 and the name of the street you grew up on.
 \end{enumerate}
-
 \end{exercise}
 
 
@@ -3198,7 +3194,6 @@ first argument to the power of the second.  For example:
 \end{lstlisting}
 %
 would assign the value {\tt 8} to {\tt x}, because $2^3 = 8$.
-
 \end{exercise}
 
 
@@ -3406,7 +3401,6 @@ Write a method named {\tt makeBugs} that takes an ActorWorld and an
 integer {\tt n} and creates {\tt n} bugs colored according to their
 location.  Use the row number to control the red level and the column
 to control the blue.
-
 \end{exercise}
 
 
@@ -4210,7 +4204,6 @@ and produces boolean values.
 Write a method named {\tt isDivisible} that takes
 two integers, {\tt n} and {\tt m} and that returns {\tt true}
 if {\tt n} is divisible by {\tt m} and {\tt false} otherwise.
-
 \end{exercise}
 
 
@@ -4260,7 +4253,6 @@ at the same time, which can be difficult.
 One of the purposes of this exercise is to practice pattern-matching:
 the ability to recognize a specific problem as an instance of a
 general category of problems.
-
 \end{exercise}
 
 
@@ -4284,7 +4276,6 @@ with the given lengths.
 
 The point of this exercise is to use conditional statements to
 write a fruitful method.
-
 \end{exercise}
 
 
@@ -4418,7 +4409,6 @@ from {\tt main} and printing the return value.
 
 \WARNING{} the return value gets very big very quickly.  You should try it
 only for small values of $m$ and $n$ (not bigger than 2).
-
 \end{exercise}
 
 
@@ -4492,7 +4482,6 @@ is 1.
 
 Optional challenge: you can make this method more efficient, when {\tt
   n} is even, using $x^n = \left( x^{n/2} \right)^2$.
-
 \end{exercise}
 
 
@@ -5602,7 +5591,6 @@ that method defined?
 was invoked?
 
 \end{itemize}
-
 \end{exercise}
 
 
@@ -5736,7 +5724,6 @@ string and the letter as arguments.
 Then rewrite the method so that it uses
 {\tt indexOf} to locate the a's, rather than checking
 the characters one by one.
-
 \end{exercise}
 
 
@@ -6123,7 +6110,6 @@ public class Mystery {
     }
 }
 \end{lstlisting}
-
 \end{exercise}
 
 
@@ -6142,7 +6128,6 @@ modify it so that it does the right thing.
      int firstDigit = number/10;
      System.out.println(lastDigit + firstDigit);
 \end{lstlisting}
-
 \end{exercise}
 
 \begin{exercise}
@@ -6330,7 +6315,6 @@ times.  You can write this method recursively, or use a while loop.
   you could encapsulate the repeated code in a method.
 
 \end{itemize}
-
 \end{exercise}
 
 
@@ -7002,7 +6986,6 @@ public static void main(String[] args) {
     printPoint(p2);
 }
 \end{lstlisting}
-
 \end{exercise}
 
 
@@ -7390,7 +7373,6 @@ is large-scale organization.
 
 Experiment with different rules and see what effect they have on the
 system.  Small changes can have unpredicable results!
-
 \end{exercise}
 
 
@@ -7461,7 +7443,6 @@ bigger or switch to an {\tt UnboundedGrid}.
 interact.
 
 \end{enumerate}
-
 \end{exercise}
 
 
@@ -9959,7 +9940,6 @@ parameter and that returns {\tt true} if the hand contains a flush,
 and {\tt false} otherwise.
 
 \end{enumerate}
-
 \end{exercise}
 
 
@@ -10742,7 +10722,6 @@ I think it is more readable as a class method.
 Transform {\tt merge} into an object method,
 and change {\tt mergeSort} accordingly.  Which version of
 {\tt merge} do you prefer?
-
 \end{exercise}
 
 
@@ -11657,7 +11636,6 @@ The result should look like Mickey Moose:
 
 You can download a solution from
 \url{http://thinkapjava.com/code/MickeySoln.java}.
-
 \end{exercise}
 
 
