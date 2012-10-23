@@ -3305,54 +3305,43 @@ would assign the value {\tt 8} to {\tt x}, because $2^3 = 8$.
 
 \section{Getting started}
 
-Now is a good time to start working with the AP Computer Science Case
-Study, which is a program called GridWorld.  To get started, install
-GridWorld, which you can download from the College Board:
-\url{http://www.collegeboard.com/student/testing/ap/compsci_a/case.html}.
+In this chapter, you will start to familiarize yourself with a Java
+program called GridWorld. It is used as a case study in the AP
+Computer Science program, and in other educational
+environments.\footnote{\url{http://www.collegeboard.com/student/testing/ap/compsci_a/case.html}}
+Your instructor should provide direction on how to set up GridWorld in
+your development environment, or see the installation guide at the
+College Board web site.
 
-When you unpack this code, you should have a folder named {\tt
-  GridWorldCode} that contains {\tt projects/firstProject}, which
-contains {\tt BugRunner.java}.
+GridWorld is the first graphical Java program we will develop. When
+you run the program, a new window opens containing a $10\times10$
+grid. As a user and/or a programmer, you can place various
+\emph{objects} on the grid, and instruct them to move around and
+interact.
 
-Make a copy of {\tt BugRunner.java} in another folder and then import it
-into your development environment.  There are instructions here that
-might help: \url{http://www.collegeboard.com/prod_downloads/student/testing/ap/compsci_a/ap07_gridworld_installation_guide.pdf}.
+\begin{figure}
+  \label{gridscreen}
+  \centering
+  \includegraphics[scale=.33]{figs/gridworld}
+\end{figure}
 
-Once you run {\tt BugRunner.java}, download the GridWorld Student
-Manual from \url{http://www.collegeboard.com/prod_downloads/student/testing/ap/compsci_a/ap07_gridworld_studmanual_appends_v3.pdf}.
+This environment introduces some terminology that we'll study in more
+depth in chapters~\ref{chap08} and~\ref{chap09}. The components of
+GridWorld, including Bugs, Rocks, Flowers, and the Grid itself, are
+\textbf{objects}. A \textbf{class} is a set of objects; every object
+belongs to some class that determines its properties and behaviors.
 
-The Student Manual uses vocabulary I have not presented yet, so to
-get you started, here is a quick preview:
+In the GridWorld screen image (page~\pageref{gridscreen}), you can see
+two rocks, two flowers, and one bug. These are five distinct objects,
+but they were created from just three classes: \texttt{Rock},
+\texttt{Flower}, and \texttt{Bug}. An object is also called an
+\textbf{instance} of a class. So, there are two instances of
+\texttt{Flower} on the grid.
 
-\begin{itemize}
-
-\item The components of GridWorld, including Bugs, Rocks and the Grid
-itself, are {\bf objects}.
-
-\item A {\bf constructor} is a special method that creates new objects.
-
-\item A {\bf class} is a set of objects; every object belongs to a
-class.
-
-\item An object is also called an {\bf instance} because it is a member,
-or instance, of a class.
-
-\item An {\bf attribute} is a piece of information about an object, like
-its color or location.
-
-\item An {\bf accessor method} is a method that returns an attribute of
-an object.
-
-\item A {\bf modifier method} changes an attribute of an object.
-
-\end{itemize}
-
-Now you should be able to read Part 1 of the Student Manual and do
-the exercises.
-
-\section{{\tt BugRunner}}
-
-{\tt BugRunner.java} contains this code:
+The first GridWorld program, \texttt{BugRunner.java}, looks something
+like the following. It consists, as usual, of a class with a
+\texttt{main} method, but there are some new details that merit
+explanation.
 
 \begin{lstlisting}
 import info.gridworld.actor.ActorWorld;
@@ -3371,20 +3360,27 @@ public class BugRunner
 }
 \end{lstlisting}
 
-The first three lines are {\tt import} statements; they list the
-classes from GridWorld used in this program.  You can find the
-documentation for these classes at
-\url{http://www.greenteapress.com/thinkapjava/javadoc/gridworld/}.
+The first three lines in the program are {\tt import} statements; they
+list the classes from GridWorld used in this program. Your compiler
+still needs to be told where to find these classes, usually in a
+\texttt{jar} (Java Archive) file.
 
-Like the other programs we have seen, BugRunner defines a class
-that provides a {\tt main} method.  The first line of {\tt main}
-creates an {\tt ActorWorld} object.  {\tt new} is a Java keyword
-that creates new objects.
+The first line of {\tt main} creates an {\tt ActorWorld} object. {\tt
+  new} is a Java keyword that creates new objects. The next two lines
+create a Bug and a Rock, and add them to {\tt world}, in a random
+location. The last line displays the world on the screen.
 
-The next two lines create a Bug and a Rock, and add them to {\tt world}.
-The last line shows the world on the screen.
+Running this program in your Java development environment produces a
+window similar to the one shown on this page. You can add new objects
+and interact with them in that window, but in this chapter we will
+mostly concentrate on manipulating them from within the program
+itself.
 
-Open {\tt BugRunner.java} for editing and replace this line:
+\section{Bug objects}
+\label{sec:bug-objects}
+
+
+In {\tt BugRunner.java}, replace this line:
 
 \begin{lstlisting}
     world.add(new Bug());
@@ -3397,19 +3393,54 @@ with these lines:
     world.add(redBug);
 \end{lstlisting}
 
-The first line assigns the Bug to a variable named {\tt redBug};
-we can use {\tt redBug} to invoke the Bug's methods.  Try this:
+The first line assigns the freshly-created Bug to a variable named
+{\tt redBug}; we can use {\tt redBug} to invoke the Bug's methods. Try
+this:
 
 \begin{lstlisting}
     System.out.println(redBug.getLocation());
 \end{lstlisting}
 
-Note: If you run this before adding the Bug to the {\tt world}, the result is
-{\tt null}, which means that the Bug doesn't have a location yet.
+Note: If you run this before adding the Bug to the {\tt world}, the
+result is {\tt null}, which means that the Bug doesn't have a location
+yet. Assuming that \texttt{getLocation} is called after adding
+\texttt{redBug} to the world, it should print a location such as
+\texttt{(9, 8)} to the usual output window in your IDE.
 
-Invoke the other accessor methods and print the bug's attributes.
-Invoke the methods {\tt canMove}, {\tt move} and {\tt turn} and
-be sure you understand what they do.  Now try these exercises:
+Some other methods available on \texttt{Bug} objects include:
+\begin{itemize}
+\item \texttt{Color getColor()} --- returns the current color of the
+  bug, using the type \texttt{java.awt.Color} (you may need to
+  \texttt{import} this class if you declare a variable to store the
+  bug's color).
+\item \texttt{void setColor(Color newColor)} --- changes the color of
+  the bug to the \texttt{newColor}. You can read more about
+  \texttt{Color} objects below.
+\item \texttt{int getDirection()} --- returns the heading of the bug
+  (which way it is facing), using an integer number of degrees. A
+  value of zero means heading North, 90 is East, 180 is South, and 270
+  is West. Offset by 45 degrees to get intermediate headings, such as
+  135 for Southeast.
+\item \texttt{void setDirection(int newDirection)} --- change the
+  heading of the bug. For example, you can make it turn by 45 degrees
+  from its current heading using
+  \texttt{redBug.setDirection(redBug.getDirection() + 45);}
+\item \texttt{boolean canMove()} --- determines whether there is an
+  obstacle in the location immediately ahead of the bug along its
+  current direction. Returns a \texttt{boolean}, which means a
+  true/false value that can be used in an \texttt{if} statement.
+\item \texttt{void turn()} --- rotates the bug clockwise by 45
+  degrees.
+\item \texttt{void move()} --- moves the bug forward by one grid
+  location along its current direction.
+\item \texttt{void moveTo(Location newLocation)} --- moves the bug to
+  an entirely new location on the grid, which may or may not be
+  adjacent to its current location.
+\end{itemize}
+
+You can try all of these by clicking on a bug in the GridWorld window,
+or by calling them on an object like \texttt{redBug} in the
+\texttt{main} method.
 
 \begin{exercise}
 
@@ -3421,8 +3452,9 @@ and invokes {\tt move}.  Test your method by calling it from {\tt main}.
 \item Modify {\tt moveBug} so that it invokes {\tt canMove} and moves
 the bug only if it can.
 
-\item Modify {\tt moveBug} so that it takes an integer, {\tt n}, as a
-parameter, and moves the bug {\tt n} times (if it can).
+\item Modify {\tt moveBug} so that it takes an integer {\tt n}, as a
+  parameter, and moves the bug {\tt n} times (if it can).
+  \textbf{Hint:} see section~\ref{recursion} on recursion.
 
 \item Modify {\tt moveBug} so that if the bug can't move, it invokes
 {\tt turn} instead.
@@ -3430,23 +3462,50 @@ parameter, and moves the bug {\tt n} times (if it can).
 \end{enumerate}
 \end{exercise}
 
+\section{Random numbers}
+\label{sec:random}
+
+The \texttt{Math} class provides a method named \texttt{random} that
+returns a \texttt{double} between 0.0 and 1.0 (not including 1.0).
+With a bit of calculation, you can use this method to generate random
+numbers in any range you wish.
+
+For example, you can multiply to get a double in a larger range, and
+typecast to truncate the decimal portion and produce an integer.
+Below is a table showing some expressions involving \texttt{random},
+and the ranges of numbers they produce.
+
+\[\begin{array}{rcl}
+  0.0 \leq&\texttt{Math.random()}&< 1.0\\
+  0.0 \leq&\texttt{Math.random()*6}&< 6.0\\
+  0 \leq&\texttt{(int)(Math.random()*6)}& < 6\\
+  1 \leq&\texttt{(int)(Math.random()*6)+1}& < 7\\
+\end{array}
+\]
+
+The last expression in this table can be used to simulate rolling
+six-sided dice. It produces only the integers $1$ through $6$. Note
+that the lower bound of the range is less than or equal to the
+expression ($\le$) while the upper bound of the range is strictly less
+than ($<$).
 
 \begin{exercise}
 
 \begin{enumerate}
 
-\item The {\tt Math} class provides a method named {\tt random}
-that returns a double between 0.0 and 1.0 (not including 1.0).
+\item Try using \texttt{Math.random()} to produce a random direction
+  for your bug. The result should always be one of 0, 90, 180,
+  or 270.
 
 \item Write a method named {\tt randomBug} that takes a Bug as a
   parameter and sets the Bug's direction to one of 0, 90, 180 or 270
   with equal probability, and then moves the bug if it can.
 
 \item Modify {\tt randomBug} to take an integer {\tt n} and repeat
-{\tt n} times.
+{\tt n} times. \textbf{Hint:} use recursion.
 
-The result is a random walk, which you can read about
-at \url{http://en.wikipedia.org/wiki/Random_walk}.
+The result is a random walk, which you can read about at
+\url{http://en.wikipedia.org/wiki/Random_walk}.
 
 \item To see a longer random walk, you can give ActorWorld a bigger stage.
 At the top of {\tt BugRunner.java}, add this {\tt import} statement:
@@ -3467,13 +3526,10 @@ steps (you might have to use the scrollbars to find the Bug).
 \end{enumerate}
 \end{exercise}
 
-
-\begin{exercise}
+\section{Color and Location objects}
+\label{sec:color}
 
 GridWorld uses Color objects, which are defined in a Java library.
-You can read the documentation at
-\url{http://download.oracle.com/javase/6/docs/api/java/awt/Color.html}.
-
 To create Bugs with different colors, we have to import
 {\tt Color}:
 
@@ -3488,24 +3544,52 @@ create a new color like this:
     Color purple = new Color(148, 0, 211);
 \end{lstlisting}
 
+The three parameters represent the red, green, and blue components of
+the color. They are integers ranging from 0 through 255.
+
+Some other methods available on \texttt{Color} objects include:
+\begin{itemize}
+\item \texttt{int getRed()} --- returns the red component of the
+  color, as an integer ranging from 0 through 255.
+\item \texttt{int getGreen()} --- returns the green component of the
+  color.
+\item \texttt{int getBlue()} --- returns the blue component of the
+  color.
+\item \texttt{Color brighter()} --- returns a color brighter than this
+  one.
+\item \texttt{Color darker()} --- returns a color darker than this
+  one.
+\end{itemize}
+
+\begin{exercise}
 Make a few bugs with different colors.  Then write a method named
 {\tt colorBug} that takes a Bug as a parameter, reads its location,
 and sets the color.
 
-The Location object you get from
-{\tt getLocation} has methods named {\tt getRow} and {\tt getCol} that
-return integers.  So you can get the x-coordinate of a Bug like this:
+The Location object you get from {\tt getLocation} has methods named
+{\tt getRow} and {\tt getCol} that return integers. So you can get the
+x-coordinate (column) of a Bug like this:
 
 \begin{lstlisting}
     int x = bug.getLocation().getCol();
 \end{lstlisting}
 
+The coordinate system for our $10\times10$ grid has $0,0$ in the
+upper-left corner, and $9,9$ in the lower-right. You can specify new
+locations as follows, where $3$ is the row number, and $7$ is the
+column.
+
+\begin{lstlisting}
+    Location home = new Location(3, 7);
+\end{lstlisting}
+
 Write a method named {\tt makeBugs} that takes an ActorWorld and an
 integer {\tt n} and creates {\tt n} bugs colored according to their
-location.  Use the row number to control the red level and the column
-to control the blue.
+location. Use the row number to control the red level and the column
+to control the blue. \textbf{Hint:} to distinguish different colors,
+you will have to scale the row/column numbers (which range from 0 to
+9) to the full spectrum of colors available (0 to 255).
 \end{exercise}
-
 
 
 \chapter{Fruitful methods}
