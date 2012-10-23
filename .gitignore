@@ -8,3 +8,4 @@
 *.out
 /.auctex/
 /version.tex
+/code/PlusAssoc.class
