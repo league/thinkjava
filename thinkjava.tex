@@ -506,6 +506,8 @@ comments or corrections to \url{christopher.league@liu.edu}
   \texttt{+} operator.
 \item Rewrote much of chapter 5 on the GridWorld case study, to make
   it more self-contained.
+\item Added some notes and exercises to chapter 8 on Strings and
+  things.
 \end{itemize}
 
 
@@ -5614,9 +5616,14 @@ the string.  The result is a character, which is stored in a
 a
 \end{lstlisting}
 %
-{\tt a} is not the first letter of {\tt "banana"}.  Unless you are a
+{\tt a} is not the first letter of {\tt "banana"} -- unless you are a
 computer scientist.  For perverse reasons, computer scientists
-start counting from zero.  The 0th letter (``zeroeth'') of {\tt
+start counting from zero.\footnote{Really, it just seems perverse to
+  beginners. The eminent computer scientist Edsger Dysktra gave a
+  compelling explanation -- beautifully hand-written, like most of his
+  notes: \url{http://www.cs.utexas.edu/users/EWD/ewd08xx/EWD831.PDF}.
+  See also \url{http://xkcd.com/163/}} 
+The 0th letter (``zeroeth'') of {\tt
 "banana"} is {\tt b}.  The 1th letter (``oneth'') is {\tt a} and the
 2th (``twooth'') letter is {\tt n}.
 
@@ -5626,6 +5633,14 @@ If you want the zereoth letter of a string, you have to pass
 \begin{lstlisting}
     char letter = fruit.charAt(0);
 \end{lstlisting}
+
+\begin{exercise}
+  What happens when you pass a \emph{negative} integer, such as:
+\begin{lstlisting}
+    char oops = fruit.charAt(-1);
+\end{lstlisting}
+  Try it and find out -- section~\ref{exceptions} contains an explanation.
+\end{exercise}
 
 
 \section{Length}
@@ -5706,6 +5721,7 @@ one line.
 \end{exercise}
 
 \section{Run-time errors}
+\label{exceptions}
 \index{error!run-time}
 \index{run-time error}
 \index{exception!StringIndexOutOfBounds}
@@ -5903,7 +5919,6 @@ contains the result: the total number of a's.
 \index{decrement}
 
 \begin{exercise}
-
 Encapsulate this code in a method named
 {\tt countLetters}, and generalize it so that it accepts the
 string and the letter as arguments.
@@ -5923,9 +5938,9 @@ the characters one by one.
 \index{operator!decrement}
 
 Incrementing and decrementing are such common operations that
-Java provides special operators for them.  The {\tt ++}
+Java provides special operators for them.  The `{\tt ++}'
 operator adds one to the current value of an {\tt int} or
-{\tt char}.  {\tt --} subtracts one.  Neither operator works
+{\tt char}, and `{\tt --}' subtracts one.  Neither operator works
 on {\tt double}s, {\tt boolean}s or {\tt String}s.
 
 Technically, it is legal to increment a variable and use it
@@ -6122,7 +6137,7 @@ The return value from {\tt equals} is straightforward enough;
 {\tt true} if the strings contain the same characters, and
 {\tt false} otherwise.
 
-The return value from {\tt compareTo} is a weird, too.  It is
+The return value from {\tt compareTo} is a little weird.  It is
 the difference between the first characters in the strings
 that differ.  If the strings are equal, it is 0.  If the
 first string (the one on which the method is invoked) comes
@@ -6191,14 +6206,14 @@ and generalization.
 \begin{enumerate}
 
 \item Encapsulate the following code fragment, transforming it
-into a method that takes a String as an argument and that
+into a method that takes a \texttt{String} as an argument and that
 returns the final value of {\tt count}.
 
 \item In a sentence or two, describe what the resulting method does
 (without getting into the details of how).
 
 \item Now that you have generalized the code
-so that it works on any String, what could you do to
+so that it works on any \texttt{String}, what could you do to
 generalize it more?
 
 \end{enumerate}
@@ -6227,7 +6242,6 @@ generalize it more?
 
 
 \begin{exercise}
-
 The point of this exercise is to explore Java types
 and fill in some of the details that aren't covered
 in the chapter.
@@ -6273,7 +6287,6 @@ reasonable possibilities?  How many seem stupid?
 
 
 \begin{exercise}
-
 What is the output of this program?  Describe in a sentence
 what {\tt mystery} does (not how it works).
 
@@ -6403,7 +6416,6 @@ of words from a file.  Read a list of words and print the palindromes.
 
 \begin{exercise}
 \label{abecedarian}
-
 A word is said to be ``abecedarian'' if the letters in the
 word appear in alphabetical order.  For example, the following
 are all 6-letter English abecedarian words.
@@ -6464,7 +6476,6 @@ to encode things by adding 13 and decode them by adding -13.  Try it.
 
 
 \begin{exercise}
-
 If you did the GridWorld exercises in Chapter~\ref{gridworld}, you
 might enjoy this exercise.  The goal is to use trigonometry to get the
 Bugs to chase each other.
