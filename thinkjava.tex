@@ -8526,8 +8526,9 @@ index.  You can make an array of {\tt int}s, {\tt double}s, or any
 other type, but all the values in an array have to have the same type.
 
 Syntactically, array types look like other Java types except they are
-followed by {\tt []}.  For example, {\tt int[]} is the type ``array of
-integers'' and {\tt double[]} is the type ``array of doubles.''
+followed by an empty pair of square brackets: {\tt []}. For example,
+{\tt int[]} is the type ``array of integers'' and {\tt double[]} is
+the type ``array of doubles.''
 
 You can declare variables with these types in the usual ways:
 
@@ -8547,7 +8548,7 @@ To create the array itself, use {\tt new}.
 The first assignment makes {\tt count} refer to an array of 4
 integers; the second makes {\tt values} refer to an array of {\tt
 double}s.  The number of elements in {\tt values} depends on {\tt
-size}.  You can use any integer expression as an array
+size}.  You can use any non-negative integer expression as an array
 size.
 
 \index{null}
@@ -8650,14 +8651,14 @@ Any changes in either array
 will be reflected in the other.  This is not usually the
 behavior you want; more often you want to
 allocate a new array and copy elements from
-one to the other.
+one to the other:
 
 \begin{lstlisting}
     double[] b = new double [3];
 
     int i = 0;
     while (i < 4) {
-      b[i] = a[i];
+      b[i] = a[i];  // Copy a to b
       i++;
     }
 \end{lstlisting}
@@ -8833,7 +8834,7 @@ you generate a random integer?
 \begin{exercise}
 Write a method called {\tt randomDouble} that takes two doubles,
 {\tt low} and {\tt high}, and that returns a random double $x$
-so that $low \le x < high$.
+so that $\texttt{low} \le x < \texttt{high}$.
 \end{exercise}
 
 
@@ -8931,12 +8932,11 @@ few sections develop code to generate a histogram.
 A good approach to problems like this is to think of simple methods
 that are easy to write, then combine them into a solution.
 This process is called {\bf bottom-up development}.
-See \url{http://en.wikipedia.org/wiki/Top-down_and_bottom-up_design}.
-\index{program development}
-
 It is not always obvious where to start,
 but a good approach is to look for subproblems that fit a pattern you
 have seen before.
+\index{program development}
+
 
 In Section~\ref{loopcount} we saw a loop that traversed a
 string and counted the number of times a given letter appeared.  You
@@ -9117,7 +9117,7 @@ Write a method that takes an array of integers and an integer named
 Some programmers disagree with the general rule that variables
 and methods should be given meaningful names.  Instead, they
 think variables and methods should be named after fruit.
-
+%
 For each of the following methods, write one sentence that
 describes abstractly what the method does.  For each variable,
 identify the role it plays.
